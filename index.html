@@ -4,257 +4,426 @@
   <meta charset="UTF-8">
   <title>Vipin Rao | Video Editor & Colorist</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>.card img{
-    filter: brightness(0.9);
-  width:100%;
-  border-radius:8px;
-  margin-bottom:10px;
-}
-.card a{
-  display:block;
-  color:#fff;
-}
-.card a:hover{
-    filter: brightness(1);
-  transform:scale(1.03);
-  transition:0.3s;
-}
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #ff3c00;
+      --accent2: #ff7a00;
+      --bg: #080808;
+      --bg2: #111111;
+      --bg3: #181818;
+      --text: #f0f0f0;
+      --muted: #888;
+      --border: rgba(255,60,0,0.15);
+    }
 
-    body{
-      margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:#0f0f0f;
-      color:#ffffff;
-      line-height:1.6;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    header{
-      padding:90px 20px;
-      text-align:center;
-      background:linear-gradient(180deg,#000,#111);
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
-    header h1{
-      font-size:52px;
-      margin-bottom:10px;
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--accent);
     }
-    header p{
-      font-size:18px;
-      color:#ccc;
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 500; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
     }
-    section{
-      max-width:1300px;
-      margin:auto;
-      padding:70px 20px;
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    header {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 120px 20px 80px; position: relative; overflow: hidden;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,60,0,0.12) 0%, transparent 70%),
+                  linear-gradient(180deg, #0d0d0d 0%, var(--bg) 100%);
     }
-    h2{
-      font-size:26px;
-      border-left:4px solid #ff3c00;
-      padding-left:14px;
-      margin-bottom:20px;
+    .hero-tag {
+      font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent);
+      padding: 6px 16px; border-radius: 2px; margin-bottom: 28px; display: inline-block;
+      animation: fadeUp 0.8s ease both;
     }
-    a{
-      color:#ff3c00;
-      text-decoration:none;
+    header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(72px, 12vw, 140px); line-height: 0.9; letter-spacing: 4px;
+      background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      animation: fadeUp 0.8s 0.1s ease both;
     }
-    .grid{
-      display:flex;
-      flex-wrap:wrap;
-      gap:20px;
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 22px); color: var(--muted); margin-top: 20px;
+      letter-spacing: 2px; animation: fadeUp 0.8s 0.2s ease both;
     }
-    .card{
-      background:#1a1a1a;
-      padding:20px;
-      border-radius:10px;
-      flex:1 1 300px;
+    .hero-tags {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+      margin-top: 28px; animation: fadeUp 0.8s 0.3s ease both;
     }
-    footer{
-      text-align:center;
-      padding:30px;
-      background:#000;
-      color:#888;
+    .tag {
+      font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--accent); background: rgba(255,60,0,0.08);
+      border: 1px solid rgba(255,60,0,0.25); padding: 6px 14px; border-radius: 2px;
+    }
+    .hero-cta { margin-top: 44px; animation: fadeUp 0.8s 0.4s ease both; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      padding: 14px 32px; text-decoration: none; border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn:hover { background: var(--accent2); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.4); }
+    .hero-line {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 1px; height: 80px; background: linear-gradient(to bottom, transparent, var(--accent));
+    }
+
+    /* SECTIONS */
+    section { max-width: 1280px; margin: 0 auto; padding: 90px 32px; }
+    .section-label {
+      font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: 2px; line-height: 1; margin-bottom: 40px;
+    }
+    h3 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 2px;
+      color: var(--text); margin: 50px 0 20px; padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    h3 span {
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400;
+      color: var(--muted); letter-spacing: 1px; margin-left: 14px; text-transform: uppercase;
+    }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-text p { font-size: 16px; color: #bbb; line-height: 1.8; margin-bottom: 16px; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .stat-box { background: var(--bg3); padding: 28px 24px; border: 1px solid var(--border); }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--accent); line-height: 1; }
+    .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; }
+
+    /* FEATURED */
+    .featured-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .featured-video { width: 100%; aspect-ratio: 16/9; }
+    .featured-video iframe { width: 100%; height: 100%; border: none; display: block; }
+    .featured-caption {
+      padding: 24px 28px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 16px;
+    }
+    .featured-badge {
+      font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; background: var(--accent); color: #fff;
+      padding: 4px 10px; border-radius: 2px; white-space: nowrap;
+    }
+    .featured-caption p { font-size: 14px; color: var(--muted); }
+
+    /* CARDS */
+    .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;
+    }
+    .card {
+      background: var(--bg3); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px;
+      overflow: hidden; transition: transform 0.25s, border-color 0.25s;
+      text-decoration: none; display: block;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(255,60,0,0.4); }
+    .card-thumb {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
+      filter: brightness(0.85); transition: filter 0.25s;
+    }
+    .card:hover .card-thumb { filter: brightness(1); }
+    .card-info { padding: 14px 16px; display: flex; align-items: center; gap: 10px; }
+    .play-icon {
+      width: 30px; height: 30px; background: var(--accent); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .play-icon svg { margin-left: 2px; }
+    .card-title { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.4; }
+
+    /* REELS */
+    .reels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+    .reel-card {
+      background: var(--bg3); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px;
+      overflow: hidden; text-decoration: none; display: block;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .reel-card:hover { transform: translateY(-4px); border-color: rgba(255,60,0,0.4); }
+    .reel-thumb {
+      width: 100%; aspect-ratio: 9/16; object-fit: cover; display: block;
+      filter: brightness(0.85); transition: filter 0.25s;
+    }
+    .reel-card:hover .reel-thumb { filter: brightness(1); }
+    .reel-info { padding: 10px 12px; }
+    .reel-label { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* EXPERIENCE */
+    .exp-list { display: flex; flex-direction: column; gap: 2px; }
+    .exp-item {
+      display: flex; align-items: flex-start; gap: 20px;
+      background: var(--bg3); border: 1px solid rgba(255,255,255,0.05);
+      padding: 24px 28px; transition: border-color 0.2s;
+    }
+    .exp-item:hover { border-color: var(--border); }
+    .exp-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+    .exp-text { font-size: 15px; color: #bbb; line-height: 1.6; }
+    .exp-text b { color: var(--text); font-weight: 600; }
+
+    .divider { height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); margin: 0 32px; }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 50px 20px; background: #000; border-top: 1px solid var(--border); }
+    .footer-name { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 4px; color: var(--muted); margin-bottom: 8px; }
+    footer p { font-size: 13px; color: #444; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-cta { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
 
+<nav>
+  <div class="nav-logo">Vipin Rao</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="mailto:vipinrao.editor@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
 <header>
+  <div class="hero-tag">Senior Video Editor & Colorist</div>
   <h1>Vipin Rao</h1>
-  <p>Senior Video Editor & Colorist</p>
-  <p>Podcasts • Reels • Music Videos</p>
-  <p>Remote / Work From Home</p>
-  <p>
-    <a href="mailto:vipinrao.editor@gmail.com">vipinrao.editor@gmail.com</a>
-  </p>
+  <p class="hero-sub">Podcasts &nbsp;•&nbsp; Reels &nbsp;•&nbsp; Music Videos</p>
+  <div class="hero-tags">
+    <span class="tag">Color Grading</span>
+    <span class="tag">Long-form</span>
+    <span class="tag">Short-form</span>
+    <span class="tag">Remote / WFH</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#work" class="btn">View My Work</a>
+    <a href="mailto:vipinrao.editor@gmail.com" class="btn btn-outline">Get In Touch</a>
+  </div>
+  <div class="hero-line"></div>
 </header>
 
-</header>
-
-<section>
+<section id="about">
+  <div class="section-label">Who I Am</div>
   <h2>About Me</h2>
-  <p>
-    Professional Video Editor specializing in cinematic video editing and color grading.
-    Experienced in podcasts, long-form content, and high-performing social media reels.
-    Fully equipped with a complete work-from-home editing setup.
-  </p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Professional Video Editor specializing in cinematic video editing and color grading. Experienced in podcasts, long-form content, and high-performing social media reels.</p>
+      <p>Fully equipped with a complete work-from-home editing setup. Passionate about storytelling through pacing, color, and rhythm — every frame matters.</p>
+      <a href="mailto:vipinrao.editor@gmail.com" class="btn" style="margin-top:16px;">vipinrao.editor@gmail.com</a>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-box"><div class="stat-num">100+</div><div class="stat-label">Projects Delivered</div></div>
+      <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Major Channels</div></div>
+      <div class="stat-box"><div class="stat-num">∞</div><div class="stat-label">Frames Graded</div></div>
+    </div>
+  </div>
 </section>
 
+<div class="divider"></div>
+
 <section>
-  <h2>Featured Edit (Montage)</h2>
-  <iframe width="100%" height="420"
-    src="https://www.youtube.com/embed/B4BoIGJJagE"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-  <p>
-    Featured podcast episode edited by me, featuring a popular Kannada film actor.
-    This edit showcases long-form storytelling, pacing, and professional podcast workflow.
-  </p>
+  <div class="section-label">Highlight Reel</div>
+  <h2>Featured Edit</h2>
+  <div class="featured-wrap">
+    <div class="featured-video">
+      <iframe src="https://www.youtube.com/embed/B4BoIGJJagE"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="featured-caption">
+      <span class="featured-badge">Featured</span>
+      <p>Podcast episode featuring a popular Kannada film actor — showcasing long-form storytelling, pacing, and professional podcast workflow.</p>
+    </div>
+  </div>
 </section>
 
+<div class="divider"></div>
 
-<section>
+<section id="work">
+  <div class="section-label">Portfolio</div>
   <h2>Selected Work</h2>
 
-  <h3>Just Curious – Kannada Podcast (Long-form)</h3>
-  <div class="grid">
-   <div class="card">
-  <a href="https://youtu.be/v7RHzljZXFU" target="_blank">
-    <img src="https://img.youtube.com/vi/v7RHzljZXFU/hqdefault.jpg">
-    <p>Just Curious – Kannada Podcast</p>
-  </a>
-</div>
+  <!-- ADITI PRABHUDEVA - NEW SECTION -->
+  <h3>Aditi Prabhudeva <span>Full Podcast Episodes</span></h3>
+  <div class="card-grid">
+    <a class="card" href="https://youtu.be/B5O1fcg1ZPA" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/B5O1fcg1ZPA/hqdefault.jpg" alt="Aditi Prabhudeva Episode 1">
+      <div class="card-info">
+        <div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div>
+        <div class="card-title">Aditi Prabhudeva – Episode 1</div>
+      </div>
+    </a>
+    <a class="card" href="https://youtu.be/8Tp1gWseocs" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/8Tp1gWseocs/hqdefault.jpg" alt="Aditi Prabhudeva Episode 2">
+      <div class="card-info">
+        <div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div>
+        <div class="card-title">Aditi Prabhudeva – Episode 2</div>
+      </div>
+    </a>
+    <a class="card" href="https://youtu.be/VL8ZNlLjgTE" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/VL8ZNlLjgTE/hqdefault.jpg" alt="Aditi Prabhudeva Episode 3">
+      <div class="card-info">
+        <div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div>
+        <div class="card-title">Aditi Prabhudeva – Episode 3</div>
+      </div>
+    </a>
+  </div>
 
-    <div class="card">
-  <a href="https://youtu.be/43MxRraFPxY" target="_blank">
-    <img src="https://img.youtube.com/vi/43MxRraFPxY/hqdefault.jpg">
-    <p>Podcast Episode 2</p>
-  </a>
-</div>
+  <!-- Just Curious Kannada -->
+  <h3>Just Curious <span>Kannada Podcast – Long-form</span></h3>
+  <div class="card-grid">
+    <a class="card" href="https://youtu.be/v7RHzljZXFU" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/v7RHzljZXFU/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">Just Curious – Kannada Podcast</div></div>
+    </a>
+    <a class="card" href="https://youtu.be/43MxRraFPxY" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/43MxRraFPxY/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">Podcast Episode 2</div></div>
+    </a>
+    <a class="card" href="https://youtu.be/rFTq6aTmWnw" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/rFTq6aTmWnw/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">Podcast Episode 3</div></div>
+    </a>
+    <a class="card" href="https://youtu.be/9uPPNhK3yd0" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/9uPPNhK3yd0/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">Podcast Episode 4</div></div>
+    </a>
+    <a class="card" href="https://youtu.be/HjumJwJy5_U" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/HjumJwJy5_U/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">Podcast Episode 5</div></div>
+    </a>
+  </div>
 
-<div class="card">
-  <a href="https://youtu.be/rFTq6aTmWnw" target="_blank">
-    <img src="https://img.youtube.com/vi/rFTq6aTmWnw/hqdefault.jpg">
-    <p>Podcast Episode 3</p>
-  </a>
-</div>
+  <!-- Just Curious India -->
+  <h3>Just Curious <span>India Podcast</span></h3>
+  <div class="card-grid">
+    <a class="card" href="https://youtu.be/M8tC3mVOHcM" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/M8tC3mVOHcM/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">India Podcast Episode 1</div></div>
+    </a>
+    <a class="card" href="https://youtu.be/AZXbsDDWyEE" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/AZXbsDDWyEE/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">India Podcast Episode 2</div></div>
+    </a>
+  </div>
 
-<div class="card">
-  <a href="https://youtu.be/9uPPNhK3yd0" target="_blank">
-    <img src="https://img.youtube.com/vi/9uPPNhK3yd0/hqdefault.jpg">
-    <p>Podcast Episode 4</p>
-  </a>
-</div>
+  <!-- India Viral Reels -->
+  <h3>Just Curious <span>India Viral Reels</span></h3>
+  <div class="reels-grid">
+    <a class="reel-card" href="https://youtube.com/shorts/3pX8leV29pc" target="_blank">
+      <img class="reel-thumb" src="https://img.youtube.com/vi/3pX8leV29pc/hqdefault.jpg" alt="">
+      <div class="reel-info"><div class="reel-label">Viral Reel</div></div>
+    </a>
+    <a class="reel-card" href="https://youtube.com/shorts/AyAXOj4b1Oc" target="_blank">
+      <img class="reel-thumb" src="https://img.youtube.com/vi/AyAXOj4b1Oc/hqdefault.jpg" alt="">
+      <div class="reel-info"><div class="reel-label">Viral Reel</div></div>
+    </a>
+  </div>
 
-<div class="card">
-  <a href="https://youtu.be/HjumJwJy5_U" target="_blank">
-    <img src="https://img.youtube.com/vi/HjumJwJy5_U/hqdefault.jpg">
-    <p>Podcast Episode 5</p>
-  </a>
-</div>
+  <!-- JourneysWithRP -->
+  <h3>JourneysWithRP <span>Podcast</span></h3>
+  <div class="card-grid">
+    <a class="card" href="https://youtu.be/lpXy1g8lG9Q" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/lpXy1g8lG9Q/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">Podcast Episode 1</div></div>
+    </a>
+    <a class="card" href="https://youtu.be/RLKz2dsLlnE" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/RLKz2dsLlnE/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">Podcast Episode 2</div></div>
+    </a>
+  </div>
 
-<h3>Just Curious – India Podcast</h3>
-<div class="grid">
-<div class="card">
-  <a href="https://youtu.be/M8tC3mVOHcM" target="_blank">
-    <img src="https://img.youtube.com/vi/M8tC3mVOHcM/hqdefault.jpg">
-    <p>India Podcast Episode 1</p>
-  </a>
-</div>
-
-<div class="card">
-  <a href="https://youtu.be/AZXbsDDWyEE" target="_blank">
-    <img src="https://img.youtube.com/vi/AZXbsDDWyEE/hqdefault.jpg">
-    <p>India Podcast Episode 2</p>
-  </a>
-</div>
-
-
-<h3>Just Curious – India Viral Reels</h3>
-<div class="grid">
- <div class="card">
-  <a href="https://youtube.com/shorts/3pX8leV29pc" target="_blank">
-    <img src="https://img.youtube.com/vi/3pX8leV29pc/hqdefault.jpg">
-    <p>India Viral Reel 1</p>
-  </a>
-</div>
-
-<div class="card">
-  <a href="https://youtube.com/shorts/AyAXOj4b1Oc" target="_blank">
-    <img src="https://img.youtube.com/vi/AyAXOj4b1Oc/hqdefault.jpg">
-    <p>India Viral Reel 2</p>
-  </a>
-</div>
-
-
-<h3>JourneysWithRP – Podcast</h3>
-<div class="grid">
- <div class="card">
-  <a href="https://youtu.be/lpXy1g8lG9Q" target="_blank">
-    <img src="https://img.youtube.com/vi/lpXy1g8lG9Q/hqdefault.jpg">
-    <p>Podcast Episode 1</p>
-  </a>
-</div>
-
-<div class="card">
-  <a href="https://youtu.be/RLKz2dsLlnE" target="_blank">
-    <img src="https://img.youtube.com/vi/RLKz2dsLlnE/hqdefault.jpg">
-    <p>Podcast Episode 2</p>
-  </a>
-</div>
-
-
-<h3>Viral Songs – Famous Singer</h3>
-<div class="grid">
- <div class="card">
-  <a href="https://youtu.be/zmnBf6ZV8F4" target="_blank">
-    <img src="https://img.youtube.com/vi/zmnBf6ZV8F4/hqdefault.jpg">
-    <p>Viral Song 1</p>
-  </a>
-</div>
-
-<div class="card">
-  <a href="https://youtu.be/OcaEyQv1Uhg" target="_blank">
-    <img src="https://img.youtube.com/vi/OcaEyQv1Uhg/hqdefault.jpg">
-    <p>Viral Song 2</p>
-  </a>
-</div>
-
-<div class="card">
-  <a href="https://youtu.be/y_neymbSryM" target="_blank">
-    <img src="https://img.youtube.com/vi/y_neymbSryM/hqdefault.jpg">
-    <p>Viral Song 3</p>
-  </a>
-</div>
-
-<div class="card">
-  <a href="https://youtu.be/LoQAIlrVZcA" target="_blank">
-    <img src="https://img.youtube.com/vi/LoQAIlrVZcA/hqdefault.jpg">
-    <p>Viral Song 4</p>
-  </a>
-</div>
-
-
+  <!-- Viral Songs -->
+  <h3>Viral Songs <span>Music Videos</span></h3>
+  <div class="card-grid">
+    <a class="card" href="https://youtu.be/zmnBf6ZV8F4" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/zmnBf6ZV8F4/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">Viral Song 1</div></div>
+    </a>
+    <a class="card" href="https://youtu.be/OcaEyQv1Uhg" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/OcaEyQv1Uhg/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">Viral Song 2</div></div>
+    </a>
+    <a class="card" href="https://youtu.be/y_neymbSryM" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/y_neymbSryM/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">Viral Song 3</div></div>
+    </a>
+    <a class="card" href="https://youtu.be/LoQAIlrVZcA" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/LoQAIlrVZcA/hqdefault.jpg" alt="">
+      <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">Viral Song 4</div></div>
+    </a>
+  </div>
 </section>
 
+<div class="divider"></div>
 
-<section>
+<section id="experience">
+  <div class="section-label">Career</div>
   <h2>Experience</h2>
-
-  <p><b>Senior Video Editor & Colorist</b></p>
-  <ul>
-    <li>Full-time Senior Video Editor & Colorist at <b>Just Curious Podcast Channel</b></li>
-    <li>Freelance Senior Video Editor for <b>JourneysWithRP Podcast</b></li>
-    <li>Former <b>News Video Editor</b> at <b>Namma TV, Mangalore</b></li>
-    <li>Worked as <b>1st Editor & Colorist</b> for music productions at 
-        <b>Strings Entertainment</b> and <b>Vithalayya Music Production</b>, Bangalore</li>
-    <li>Freelance editor for multiple music labels, devotional channels, films, and YouTube creators</li>
-    <li>Hands-on experience across podcasts, viral reels, music videos, devotional content, films, and news editing</li>
-  </ul>
+  <div class="exp-list">
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text">Full-time <b>Senior Video Editor & Colorist</b> at <b>Just Curious Podcast Channel</b></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text">Freelance <b>Senior Video Editor</b> for <b>JourneysWithRP Podcast</b></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text">Former <b>News Video Editor</b> at <b>Namma TV, Mangalore</b></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text"><b>1st Editor & Colorist</b> for music productions at <b>Strings Entertainment</b> and <b>Vithalayya Music Production</b>, Bangalore</div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text">Freelance editor for multiple <b>music labels, devotional channels, films, and YouTube creators</b></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text">Hands-on experience across <b>podcasts, viral reels, music videos, devotional content, films, and news editing</b></div></div>
+  </div>
 </section>
-
 
 <footer>
-  © 2025 Vipin Rao
+  <div class="footer-name">Vipin Rao</div>
+  <p>Senior Video Editor & Colorist &nbsp;|&nbsp; <a href="mailto:vipinrao.editor@gmail.com">vipinrao.editor@gmail.com</a></p>
+  <p style="margin-top:10px;">© 2025 Vipin Rao</p>
 </footer>
 
 </body>
