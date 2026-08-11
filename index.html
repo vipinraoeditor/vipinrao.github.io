@@ -208,6 +208,91 @@
     footer p { font-size: 13px; color: #444; }
     footer a { color: var(--accent); text-decoration: none; }
 
+    /* STATS BANNER */
+    .stats-banner { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 32px 20px; }
+    .stats-banner-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 0; }
+    .stat-pill { text-align: center; padding: 16px 40px; border-right: 1px solid var(--border); }
+    .stat-pill:last-child { border-right: none; }
+    .stat-pill-num { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--accent); line-height: 1; }
+    .stat-pill-label { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+
+    /* INTRO VIDEO */
+    .intro-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .intro-video-box { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; }
+    .intro-video-box iframe { width: 100%; height: 100%; border: none; display: block; }
+    .intro-text p { font-size: 16px; color: #bbb; line-height: 1.8; margin-bottom: 14px; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2px; }
+    .skill-item { background: var(--bg3); border: 1px solid rgba(255,255,255,0.05); padding: 20px 24px; display: flex; align-items: center; gap: 14px; transition: border-color 0.2s; }
+    .skill-item:hover { border-color: var(--border); }
+    .skill-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+    .skill-name { font-size: 14px; font-weight: 500; color: var(--text); }
+    .skill-type { font-size: 11px; color: var(--muted); margin-top: 2px; letter-spacing: 1px; }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .contact-text p { font-size: 16px; color: #bbb; line-height: 1.8; margin-bottom: 24px; }
+    .contact-available { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,200,100,0.1); border: 1px solid rgba(0,200,100,0.3); padding: 8px 16px; border-radius: 2px; margin-bottom: 28px; }
+    .avail-dot { width: 8px; height: 8px; background: #00c864; border-radius: 50%; animation: pulse 2s infinite; }
+    .avail-text { font-size: 12px; color: #00c864; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .contact-btns { display: flex; flex-direction: column; gap: 12px; }
+    .contact-btn { display: flex; align-items: center; gap: 14px; background: var(--bg3); border: 1px solid rgba(255,255,255,0.07); padding: 18px 24px; border-radius: 4px; text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+    .contact-btn:hover { border-color: var(--accent); transform: translateX(4px); }
+    .contact-btn-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .contact-btn-label { font-size: 15px; font-weight: 500; color: var(--text); }
+    .contact-btn-text { font-size: 13px; color: var(--muted); }
+
+    /* INSTAGRAM REELS GRID */
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 14px;
+    }
+    .insta-card {
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 4px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .insta-card:hover { transform: translateY(-4px); border-color: rgba(255,60,0,0.4); }
+    .insta-thumb {
+      width: 100%;
+      aspect-ratio: 9/16;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      gap: 10px;
+    }
+    .insta-icon {
+      font-size: 32px;
+      opacity: 0.4;
+    }
+    .insta-play {
+      width: 44px;
+      height: 44px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .insta-info { padding: 10px 12px; }
+    .insta-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -219,6 +304,10 @@
       section { padding: 60px 20px; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .hero-cta { flex-direction: column; align-items: center; }
+      .intro-wrap { grid-template-columns: 1fr; gap: 30px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+      .stat-pill { padding: 12px 20px; }
+      .stat-pill-num { font-size: 32px; }
     }
   </style>
 </head>
@@ -230,7 +319,8 @@
     <li><a href="#about">About</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="mailto:vipinrao.editor@gmail.com">Contact</a></li>
+    <li><a href="#contact">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -240,31 +330,64 @@
   <p class="hero-sub">Podcasts &nbsp;•&nbsp; Reels &nbsp;•&nbsp; Music Videos</p>
   <div class="hero-tags">
     <span class="tag">Color Grading</span>
-    <span class="tag">Long-form</span>
-    <span class="tag">Short-form</span>
+    <span class="tag">Podcasts</span>
+    <span class="tag">Storytelling</span>
+    <span class="tag">Vlogs & Reels</span>
     <span class="tag">Remote / WFH</span>
   </div>
   <div class="hero-cta">
     <a href="#work" class="btn">View My Work</a>
-    <a href="mailto:vipinrao.editor@gmail.com" class="btn btn-outline">Get In Touch</a>
+    <a href="Vipin_Rao_CV.pdf" download class="btn btn-outline">Download CV</a>
+    <a href="#contact" class="btn btn-outline">Get In Touch</a>
   </div>
   <div class="hero-line"></div>
 </header>
+
+<!-- STATS BANNER -->
+<div class="stats-banner">
+  <div class="stats-banner-inner">
+    <div class="stat-pill"><div class="stat-pill-num">6+</div><div class="stat-pill-label">Years Experience</div></div>
+    <div class="stat-pill"><div class="stat-pill-num">100+</div><div class="stat-pill-label">Videos Edited</div></div>
+    <div class="stat-pill"><div class="stat-pill-num">16+</div><div class="stat-pill-label">Viral Reels</div></div>
+    <div class="stat-pill"><div class="stat-pill-num">10+</div><div class="stat-pill-label">YouTube Channels</div></div>
+    <div class="stat-pill"><div class="stat-pill-num">∞</div><div class="stat-pill-label">Frames Graded</div></div>
+  </div>
+</div>
 
 <section id="about">
   <div class="section-label">Who I Am</div>
   <h2>About Me</h2>
   <div class="about-grid">
     <div class="about-text">
-      <p>Professional Video Editor specializing in cinematic video editing and color grading. Experienced in podcasts, long-form content, and high-performing social media reels.</p>
+      <p>Professional Video Editor specializing in cinematic video editing and color grading. Proud to have worked with <strong>Karnataka's biggest YouTube channels</strong> across podcasts, storytelling, vlogs, and viral reels.</p>
       <p>Fully equipped with a complete work-from-home editing setup. Passionate about storytelling through pacing, color, and rhythm — every frame matters.</p>
       <a href="mailto:vipinrao.editor@gmail.com" class="btn" style="margin-top:16px;">vipinrao.editor@gmail.com</a>
     </div>
     <div class="stats-grid">
-      <div class="stat-box"><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-box"><div class="stat-num">6+</div><div class="stat-label">Years Experience</div></div>
       <div class="stat-box"><div class="stat-num">100+</div><div class="stat-label">Projects Delivered</div></div>
-      <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Major Channels</div></div>
+      <div class="stat-box"><div class="stat-num">10+</div><div class="stat-label">YouTube Channels</div></div>
       <div class="stat-box"><div class="stat-num">∞</div><div class="stat-label">Frames Graded</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- INTRO VIDEO -->
+<section>
+  <div class="intro-wrap">
+    <div class="intro-video-box">
+      <iframe src="https://www.youtube.com/embed/pPWJh3c4LJs"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <div class="intro-text">
+      <div class="section-label">Meet The Editor</div>
+      <h2>Hi, I'm Vipin Rao</h2>
+      <p>Senior Video Editor & Colorist with 6+ years of experience crafting stories that connect. I've worked with Karnataka's biggest YouTube channels across podcasts, storytelling, vlogs, and viral reels.</p>
+      <p>Every project I take on gets my full attention — from the first cut to the final color grade. Let me help bring your vision to life.</p>
+      <a href="#contact" class="btn" style="margin-top: 8px;">Work With Me</a>
     </div>
   </div>
 </section>
@@ -276,13 +399,13 @@
   <h2>Featured Edit</h2>
   <div class="featured-wrap">
     <div class="featured-video">
-      <iframe src="https://www.youtube.com/embed/B4BoIGJJagE"
+      <iframe src="https://www.youtube.com/embed/xd2yXGGibs4"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen></iframe>
     </div>
     <div class="featured-caption">
       <span class="featured-badge">Featured</span>
-      <p>Podcast episode featuring a popular Kannada film actor — showcasing long-form storytelling, pacing, and professional podcast workflow.</p>
+      <p>Storytelling video edited for DeeTalks — showcasing cinematic pacing, visual storytelling, and professional color grading.</p>
     </div>
   </div>
 </section>
@@ -315,6 +438,56 @@
       <div class="card-info">
         <div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div>
         <div class="card-title">Aditi Prabhudeva – Episode 3</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- DeeTalks Podcast -->
+  <h3>DeeTalks <span>Podcast Episodes</span></h3>
+  <div class="card-grid">
+    <a class="card" href="https://youtu.be/qmawAM5mEJA" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/qmawAM5mEJA/hqdefault.jpg" alt="DeeTalks Podcast Episode 1">
+      <div class="card-info">
+        <div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div>
+        <div class="card-title">DeeTalks – Podcast Episode 1</div>
+      </div>
+    </a>
+    <a class="card" href="https://youtu.be/BYP2_fnh8n8" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/BYP2_fnh8n8/hqdefault.jpg" alt="DeeTalks Podcast Episode 2">
+      <div class="card-info">
+        <div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div>
+        <div class="card-title">DeeTalks – Podcast Episode 2</div>
+      </div>
+    </a>
+    <a class="card" href="https://youtu.be/Ti_MWMeILT8" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/Ti_MWMeILT8/hqdefault.jpg" alt="DeeTalks Podcast Episode 3">
+      <div class="card-info">
+        <div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div>
+        <div class="card-title">DeeTalks – Podcast Episode 3</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- DeeTalks Storytelling -->
+  <h3>DeeTalks <span>Storytelling</span></h3>
+  <div class="card-grid">
+    <a class="card" href="https://youtu.be/xd2yXGGibs4" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/xd2yXGGibs4/hqdefault.jpg" alt="DeeTalks Storytelling">
+      <div class="card-info">
+        <div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div>
+        <div class="card-title">DeeTalks – Cinematic Storytelling</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Dhanushree Vlog -->
+  <h3>Dhanushree <span>Vlog</span></h3>
+  <div class="card-grid">
+    <a class="card" href="https://youtu.be/TWS1TcLUY6Q" target="_blank">
+      <img class="card-thumb" src="https://img.youtube.com/vi/TWS1TcLUY6Q/hqdefault.jpg" alt="Dhanushree Vlog">
+      <div class="card-info">
+        <div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div>
+        <div class="card-title">Dhanushree – Vlog Edit</div>
       </div>
     </a>
   </div>
@@ -357,16 +530,72 @@
     </a>
   </div>
 
-  <!-- India Viral Reels -->
-  <h3>Just Curious <span>India Viral Reels</span></h3>
-  <div class="reels-grid">
-    <a class="reel-card" href="https://youtube.com/shorts/3pX8leV29pc" target="_blank">
-      <img class="reel-thumb" src="https://img.youtube.com/vi/3pX8leV29pc/hqdefault.jpg" alt="">
-      <div class="reel-info"><div class="reel-label">Viral Reel</div></div>
+  <!-- Instagram Viral Reels -->
+  <h3>Viral Reels <span>Instagram – Edited by Vipin Rao</span></h3>
+  <div class="insta-grid">
+    <a class="insta-card" href="https://www.instagram.com/reel/DbS5Mv8TigT/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 1</div></div>
     </a>
-    <a class="reel-card" href="https://youtube.com/shorts/AyAXOj4b1Oc" target="_blank">
-      <img class="reel-thumb" src="https://img.youtube.com/vi/AyAXOj4b1Oc/hqdefault.jpg" alt="">
-      <div class="reel-info"><div class="reel-label">Viral Reel</div></div>
+    <a class="insta-card" href="https://www.instagram.com/reel/DbKdn5eReR4/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 2</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/DaFyOJSSE-3/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 3</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/DY65zPIH0Md/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 4</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/DYgkHGRSt2Z/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 5</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/DTaS0R1EpJq/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 6</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/DSXTEF-kmVn/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 7</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/DUavDmFgHi7/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 8</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/Da7psTBsXT1/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 9</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/DDBZsq7SUie/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 10</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/DXpIJt5DQrF/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 11</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/DXcHTkgDfKd/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 12</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/DXLKMC_ycIu/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 13</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/CxIAXh9PH-b/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 14</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/DOGGmABkvox/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 15</div></div>
+    </a>
+    <a class="insta-card" href="https://www.instagram.com/reel/DL6qn02SwSu/" target="_blank">
+      <div class="insta-thumb"><div class="insta-play"><svg width="18" height="22" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="insta-icon">&#x1F4F7;</div></div>
+      <div class="insta-info"><div class="insta-label">Viral Reel 16</div></div>
     </a>
   </div>
 
@@ -411,14 +640,96 @@
   <div class="section-label">Career</div>
   <h2>Experience</h2>
   <div class="exp-list">
-    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text">Full-time <b>Senior Video Editor & Colorist</b> at <b>Just Curious Podcast Channel</b></div></div>
-    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text">Freelance <b>Senior Video Editor</b> for <b>JourneysWithRP Podcast</b></div></div>
-    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text">Former <b>News Video Editor</b> at <b>Namma TV, Mangalore</b></div></div>
-    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text"><b>1st Editor & Colorist</b> for music productions at <b>Strings Entertainment</b> and <b>Vithalayya Music Production</b>, Bangalore</div></div>
-    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text">Freelance editor for multiple <b>music labels, devotional channels, films, and YouTube creators</b></div></div>
-    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text">Hands-on experience across <b>podcasts, viral reels, music videos, devotional content, films, and news editing</b></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text">Worked with <b>Karnataka's biggest YouTube channels</b> across podcasts, storytelling, vlogs, and viral content</div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text"><b>Video Editor & Colorist</b> — <b>Aditi Prabhudeva Podcast</b> <span style="color:var(--accent);font-size:12px;margin-left:8px;">May 2026 – Present</span><br><span style="color:#999;font-size:13px;">Long-form podcast episodes, short-form reels, color grading & cinematic visual identity</span></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text"><b>Video Editor & Colorist</b> — <b>Deetalkss (Dee Talks) Podcast</b> <span style="color:var(--accent);font-size:12px;margin-left:8px;">May 2026 – Present</span><br><span style="color:#999;font-size:13px;">Kannada educational & interview podcast — color correction, sound sync & multi-platform delivery</span></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text"><b>Senior Video Editor & Color Grader</b> — <b>Just Curious Podcast, Just Curious India & Just Curious Clips</b> <span style="color:var(--accent);font-size:12px;margin-left:8px;">Jun 2024 – May 2026</span><br><span style="color:#999;font-size:13px;">Full-time — long-form episodes, viral reels, complete post-production workflow end to end</span></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text"><b>Senior Video Editor & Colorist (Freelance)</b> — <b>JourneysWithRP Podcast</b><br><span style="color:#999;font-size:13px;">Complete post-production — editing, color grading and final delivery</span></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text"><b>News Editor</b> — <b>Namma TV, Mangalore</b><br><span style="color:#999;font-size:13px;">Broadcast-ready news editing — scripting, sequencing, graphics & effects</span></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text"><b>Associate Editor</b> — <b>Sai Eashwar TV, Udupi</b><br><span style="color:#999;font-size:13px;">Scene trimming, footage review, archive management & digitization</span></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text"><b>1st Editor & Colorist</b> — <b>Strings Entertainment & Vithalayya Music Production</b>, Bangalore<br><span style="color:#999;font-size:13px;">YouTube channel and music video production</span></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text"><b>Video Editor</b> — <b>Pebble Music, Pebble Devotional & Pebble Audio</b>, Bangalore<br><span style="color:#999;font-size:13px;">Devotional and music content across the Pebble network</span></div></div>
+    <div class="exp-item"><div class="exp-dot"></div><div class="exp-text"><b>Freelance Projects</b> — A2 Music, Prabuddha Film, Varun Cine Creation, Kannada art film <b>"Dvamdva"</b>, Dr. Abhishek Rao Korodkal (Singer), Diksoochi, Chicken Sambar Productions, Cini Sandalwood & more</div></div>
   </div>
 </section>
+
+<div class="divider"></div>
+
+<!-- SKILLS & TOOLS -->
+<section>
+  <div class="section-label">Tools I Use</div>
+  <h2>Skills & Software</h2>
+  <div class="skills-grid">
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">DaVinci Resolve</div><div class="skill-type">Editing & Color Grading</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Adobe Premiere Pro</div><div class="skill-type">Video Editing</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Final Cut Pro</div><div class="skill-type">Video Editing</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Filmora</div><div class="skill-type">Video Editing</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Podcast Editing</div><div class="skill-type">Long-form Content</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Reels & Shorts</div><div class="skill-type">Short-form Content</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Color Grading</div><div class="skill-type">Cinematic Look</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Storytelling</div><div class="skill-type">Narrative Editing</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Music Video Editing</div><div class="skill-type">Sync & Rhythm</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Vlog Editing</div><div class="skill-type">Travel & Lifestyle</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">News Editing</div><div class="skill-type">Broadcast</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Remote Workflow</div><div class="skill-type">Work From Home</div></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-label">Kind Words</div>
+  <h2>Testimonials</h2>
+  <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:160px;">
+      <div style="font-size:32px; margin-bottom:12px; opacity:0.3;">❝</div>
+      <div style="font-size:13px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Coming Soon</div>
+    </div>
+    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:160px;">
+      <div style="font-size:32px; margin-bottom:12px; opacity:0.3;">❝</div>
+      <div style="font-size:13px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Coming Soon</div>
+    </div>
+    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:160px;">
+      <div style="font-size:32px; margin-bottom:12px; opacity:0.3;">❝</div>
+      <div style="font-size:13px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Coming Soon</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's Work Together</div>
+  <h2>Get In Touch</h2>
+  <div class="contact-grid">
+    <div class="contact-text">
+      <div class="contact-available">
+        <div class="avail-dot"></div>
+        <div class="avail-text">Available for Freelance & Full-time Work</div>
+      </div>
+      <p>Looking for a dedicated video editor who understands storytelling, pacing, and visual impact? I'm currently open to new projects and collaborations.</p>
+      <p>Whether it's a podcast, reel, vlog, music video, or storytelling project — let's create something great together.</p>
+    </div>
+    <div class="contact-btns">
+      <a class="contact-btn" href="mailto:vipinrao.editor@gmail.com">
+        <div class="contact-btn-icon" style="background: rgba(255,60,0,0.15);">✉️</div>
+        <div><div class="contact-btn-label">vipinrao.editor@gmail.com</div><div class="contact-btn-text">Send me an email</div></div>
+      </a>
+      <a class="contact-btn" href="https://wa.me/919353453767" target="_blank">
+        <div class="contact-btn-icon" style="background: rgba(37,211,102,0.15);">💬</div>
+        <div><div class="contact-btn-label">+91 93534 53767</div><div class="contact-btn-text">Message me on WhatsApp</div></div>
+      </a>
+      <a class="contact-btn" href="https://www.instagram.com/editmonk__" target="_blank">
+        <div class="contact-btn-icon" style="background: rgba(225,48,108,0.15);">📸</div>
+        <div><div class="contact-btn-label">@editmonk__</div><div class="contact-btn-text">Follow on Instagram</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
 
 <footer>
   <div class="footer-name">Vipin Rao</div>
