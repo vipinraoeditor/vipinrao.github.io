@@ -244,6 +244,21 @@
     .contact-btn-label { font-size: 15px; font-weight: 500; color: var(--text); }
     .contact-btn-text { font-size: 13px; color: var(--muted); }
 
+    /* FILTER BAR */
+    .filter-bar {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px;
+    }
+    .filter-btn {
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 10px 22px; border-radius: 2px; cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: transparent; color: var(--muted);
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
     /* INSTAGRAM REELS GRID */
     .insta-grid {
       display: grid;
@@ -347,12 +362,46 @@
 <div class="stats-banner">
   <div class="stats-banner-inner">
     <div class="stat-pill"><div class="stat-pill-num">6+</div><div class="stat-pill-label">Years Experience</div></div>
-    <div class="stat-pill"><div class="stat-pill-num">100+</div><div class="stat-pill-label">Videos Edited</div></div>
-    <div class="stat-pill"><div class="stat-pill-num">16+</div><div class="stat-pill-label">Viral Reels</div></div>
+    <div class="stat-pill"><div class="stat-pill-num">500+</div><div class="stat-pill-label">Videos Delivered</div></div>
+    <div class="stat-pill"><div class="stat-pill-num">100+</div><div class="stat-pill-label">Viral Reels Edited</div></div>
     <div class="stat-pill"><div class="stat-pill-num">10+</div><div class="stat-pill-label">YouTube Channels</div></div>
     <div class="stat-pill"><div class="stat-pill-num">∞</div><div class="stat-pill-label">Frames Graded</div></div>
   </div>
 </div>
+
+<!-- ACHIEVEMENTS -->
+<section>
+  <div class="section-label">Impact & Milestones</div>
+  <h2>Achievements</h2>
+  <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2px;">
+    <div style="background:var(--bg3); border:1px solid var(--border); padding:32px 28px; text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:52px; color:var(--accent); line-height:1;">10M+</div>
+      <div style="font-size:12px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-top:8px;">Total Views Generated</div>
+    </div>
+    <div style="background:var(--bg3); border:1px solid var(--border); padding:32px 28px; text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:52px; color:var(--accent); line-height:1;">100+</div>
+      <div style="font-size:12px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-top:8px;">Viral Reels Edited</div>
+    </div>
+    <div style="background:var(--bg3); border:1px solid var(--border); padding:32px 28px; text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:52px; color:var(--accent); line-height:1;">10+</div>
+      <div style="font-size:12px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-top:8px;">YouTube Channels</div>
+    </div>
+    <div style="background:var(--bg3); border:1px solid var(--border); padding:32px 28px; text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:52px; color:var(--accent); line-height:1;">6+</div>
+      <div style="font-size:12px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-top:8px;">Years of Experience</div>
+    </div>
+    <div style="background:var(--bg3); border:1px solid var(--border); padding:32px 28px; text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:52px; color:var(--accent); line-height:1;">500+</div>
+      <div style="font-size:12px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-top:8px;">Videos Delivered</div>
+    </div>
+    <div style="background:var(--bg3); border:1px solid var(--border); padding:32px 28px; text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:52px; color:var(--accent); line-height:1;">5</div>
+      <div style="font-size:12px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-top:8px;">Languages Covered</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
 
 <section id="about">
   <div class="section-label">Who I Am</div>
@@ -416,7 +465,18 @@
   <div class="section-label">Portfolio</div>
   <h2>Selected Work</h2>
 
+  <!-- FILTER BUTTONS -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterWork('all')">All</button>
+    <button class="filter-btn" onclick="filterWork('podcast')">Podcast</button>
+    <button class="filter-btn" onclick="filterWork('reels')">Viral Reels</button>
+    <button class="filter-btn" onclick="filterWork('storytelling')">Storytelling</button>
+    <button class="filter-btn" onclick="filterWork('music')">Music Videos</button>
+    <button class="filter-btn" onclick="filterWork('vlog')">Vlog</button>
+  </div>
+
   <!-- ADITI PRABHUDEVA - NEW SECTION -->
+  <div class="work-group" data-category="podcast">
   <h3>Aditi Prabhudeva <span>Full Podcast Episodes</span></h3>
   <div class="card-grid">
     <a class="card" href="https://youtu.be/B5O1fcg1ZPA" target="_blank">
@@ -441,7 +501,9 @@
       </div>
     </a>
   </div>
+  </div>
 
+  <div class="work-group" data-category="podcast">
   <!-- DeeTalks Podcast -->
   <h3>DeeTalks <span>Podcast Episodes</span></h3>
   <div class="card-grid">
@@ -468,6 +530,9 @@
     </a>
   </div>
 
+  </div>
+
+  <div class="work-group" data-category="storytelling">
   <!-- DeeTalks Storytelling -->
   <h3>DeeTalks <span>Storytelling</span></h3>
   <div class="card-grid">
@@ -480,6 +545,9 @@
     </a>
   </div>
 
+  </div>
+
+  <div class="work-group" data-category="vlog">
   <!-- Dhanushree Vlog -->
   <h3>Dhanushree <span>Vlog</span></h3>
   <div class="card-grid">
@@ -492,6 +560,9 @@
     </a>
   </div>
 
+  </div>
+
+  <div class="work-group" data-category="podcast">
   <!-- Just Curious Kannada -->
   <h3>Just Curious <span>Kannada Podcast – Long-form</span></h3>
   <div class="card-grid">
@@ -517,6 +588,9 @@
     </a>
   </div>
 
+  </div>
+
+  <div class="work-group" data-category="podcast">
   <!-- Just Curious India -->
   <h3>Just Curious <span>India Podcast</span></h3>
   <div class="card-grid">
@@ -530,6 +604,9 @@
     </a>
   </div>
 
+  </div>
+
+  <div class="work-group" data-category="reels">
   <!-- Instagram Viral Reels -->
   <h3>Viral Reels <span>Instagram – Edited by Vipin Rao</span></h3>
   <div class="insta-grid">
@@ -599,6 +676,9 @@
     </a>
   </div>
 
+  </div>
+
+  <div class="work-group" data-category="podcast">
   <!-- JourneysWithRP -->
   <h3>JourneysWithRP <span>Podcast</span></h3>
   <div class="card-grid">
@@ -612,6 +692,9 @@
     </a>
   </div>
 
+  </div>
+
+  <div class="work-group" data-category="music">
   <!-- Viral Songs -->
   <h3>Viral Songs <span>Music Videos</span></h3>
   <div class="card-grid">
@@ -632,7 +715,23 @@
       <div class="card-info"><div class="play-icon"><svg width="10" height="12" viewBox="0 0 10 12" fill="none"><path d="M1 1L9 6L1 11V1Z" fill="white"/></svg></div><div class="card-title">Viral Song 4</div></div>
     </a>
   </div>
+  </div>
+
 </section>
+
+<script>
+function filterWork(cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.work-group').forEach(g => {
+    if (cat === 'all' || g.dataset.category === cat) {
+      g.style.display = 'block';
+    } else {
+      g.style.display = 'none';
+    }
+  });
+}
+</script>
 
 <div class="divider"></div>
 
@@ -673,6 +772,15 @@
     <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">News Editing</div><div class="skill-type">Broadcast</div></div></div>
     <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Remote Workflow</div><div class="skill-type">Work From Home</div></div></div>
   </div>
+
+  <div class="section-label" style="margin-top: 50px; margin-bottom: 14px;">Languages I Work In</div>
+  <div class="skills-grid">
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">English</div><div class="skill-type">Fluent</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Kannada</div><div class="skill-type">Native</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Hindi</div><div class="skill-type">Fluent</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Tulu</div><div class="skill-type">Native</div></div></div>
+    <div class="skill-item"><div class="skill-dot"></div><div><div class="skill-name">Tamil</div><div class="skill-type">Working Knowledge</div></div></div>
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -681,18 +789,140 @@
 <section>
   <div class="section-label">Kind Words</div>
   <h2>Testimonials</h2>
-  <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
-    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:160px;">
-      <div style="font-size:32px; margin-bottom:12px; opacity:0.3;">❝</div>
-      <div style="font-size:13px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Coming Soon</div>
+  <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;">
+
+    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:28px; display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:28px; color:var(--accent); opacity:0.6;">❝</div>
+      <p style="font-size:14px; color:#bbb; line-height:1.8; flex:1;">Working with Vipin has been an absolute pleasure! He is extremely professional, understands the vision behind every project, and consistently delivers high-quality work on time. What I appreciate most is how reliable he is with deadlines while still paying attention to the smallest details. He's easy to communicate with, takes feedback really well, and always goes the extra mile to make the final output better. Highly recommend working with him!</p>
+      <div style="border-top:1px solid var(--border); padding-top:14px;">
+        <div style="font-size:14px; font-weight:600; color:var(--text);">Deesha Umesh</div>
+        <div style="font-size:12px; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-top:2px;">Deetalkss Podcast</div>
+      </div>
     </div>
-    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:160px;">
-      <div style="font-size:32px; margin-bottom:12px; opacity:0.3;">❝</div>
-      <div style="font-size:13px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Coming Soon</div>
+
+    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:28px; display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:28px; color:var(--accent); opacity:0.6;">❝</div>
+      <p style="font-size:14px; color:#bbb; line-height:1.8; flex:1;">Working with Vipin has been an absolute pleasure! He is incredibly dedicated, always available when needed, and genuinely open to learning and adapting. His humility, commitment, and attention to detail reflect beautifully in his work. Truly an amazing editor and a wonderful person to work with!</p>
+      <div style="border-top:1px solid var(--border); padding-top:14px;">
+        <div style="font-size:14px; font-weight:600; color:var(--text);">Aditi Prabhudeva</div>
+        <div style="font-size:12px; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-top:2px;">Aditi Prabhudeva Podcast</div>
+      </div>
     </div>
-    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:32px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:160px;">
-      <div style="font-size:32px; margin-bottom:12px; opacity:0.3;">❝</div>
-      <div style="font-size:13px; color:var(--muted); letter-spacing:2px; text-transform:uppercase;">Coming Soon</div>
+
+    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:28px; display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:28px; color:var(--accent); opacity:0.6;">❝</div>
+      <p style="font-size:14px; color:#bbb; line-height:1.8; flex:1;">Vipin has been editing our podcast episodes and honestly, working with him has been really smooth. He gets the vibe quickly, keeps the edits natural, and knows how to make a conversation feel interesting without making it look over-edited. Very easy to coordinate with, open to feedback, and reliable with the final output.</p>
+      <div style="border-top:1px solid var(--border); padding-top:14px;">
+        <div style="font-size:14px; font-weight:600; color:var(--text);">JourneysWithRP</div>
+        <div style="font-size:12px; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-top:2px;">JourneysWithRP Podcast</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:28px; display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:28px; color:var(--accent); opacity:0.6;">❝</div>
+      <p style="font-size:14px; color:#bbb; line-height:1.8; flex:1;">I really enjoyed working with him. His working style is professional, fast, and efficient, and his editing skills are excellent. He has a great understanding of current trends and knows how to tell a story through his edits. I really liked his work and would definitely love to continue working with him on future projects.</p>
+      <div style="border-top:1px solid var(--border); padding-top:14px;">
+        <div style="font-size:14px; font-weight:600; color:var(--text);">Harshith R</div>
+        <div style="font-size:12px; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-top:2px;">Client</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:28px; display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:28px; color:var(--accent); opacity:0.6;">❝</div>
+      <p style="font-size:14px; color:#bbb; line-height:1.8; flex:1;">Working with Vipin has been an absolute pleasure. He is extremely professional, creative, and dedicated to his work. He quickly understands the vision behind a project and consistently delivers high-quality edits. His attention to detail, smooth communication, and ability to take feedback make the entire editing process very easy. We genuinely appreciate his commitment and would definitely recommend him as a reliable and skilled video editor.</p>
+      <div style="border-top:1px solid var(--border); padding-top:14px;">
+        <div style="font-size:14px; font-weight:600; color:var(--text);">Strings Entertainment</div>
+        <div style="font-size:12px; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-top:2px;">Music Channel</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:28px; display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:28px; color:var(--accent); opacity:0.6;">❝</div>
+      <p style="font-size:14px; color:#bbb; line-height:1.8; flex:1;">Working with Vipin was a great experience. Despite being an editor, he coordinated seamlessly and delivered professional-quality videos for our podcast. Highly appreciate his professionalism.</p>
+      <div style="border-top:1px solid var(--border); padding-top:14px;">
+        <div style="font-size:14px; font-weight:600; color:var(--text);">Deepa Prasad</div>
+        <div style="font-size:12px; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-top:2px;">Client</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg3); border:1px solid var(--border); border-radius:4px; padding:28px; display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:28px; color:var(--accent); opacity:0.6;">❝</div>
+      <p style="font-size:14px; color:#bbb; line-height:1.8; flex:1;">Vipin is a very good person to work with. He understands the requirements quickly, so I rarely have to explain things multiple times. Most importantly, he is punctual, takes ownership of his work, and consistently delivers on time.</p>
+      <div style="border-top:1px solid var(--border); padding-top:14px;">
+        <div style="font-size:14px; font-weight:600; color:var(--text);">Priyanka</div>
+        <div style="font-size:12px; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-top:2px;">Corporate Client</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section>
+  <div class="section-label">Investment</div>
+  <h2>Pricing</h2>
+  <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 2px; margin-bottom: 30px;">
+
+    <div style="background:var(--bg3); border:1px solid var(--border); padding:28px 24px;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:2px; color:var(--text); margin-bottom:16px;">🎙️ Podcast Editing</div>
+      <div style="margin-bottom:10px;">
+        <div style="font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1px;">Short (under 30 min)</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--accent);">₹1,500 – ₹3,000</div>
+        <div style="font-size:11px; color:var(--muted);">per episode</div>
+      </div>
+      <div style="border-top:1px solid var(--border); padding-top:10px; margin-top:10px;">
+        <div style="font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1px;">Long-form (1hr+)</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--accent);">₹3,000 – ₹6,000</div>
+        <div style="font-size:11px; color:var(--muted);">per episode</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg3); border:1px solid var(--border); padding:28px 24px;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:2px; color:var(--text); margin-bottom:16px;">🎬 Reels / Shorts</div>
+      <div style="margin-bottom:10px;">
+        <div style="font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1px;">Basic Edit</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--accent);">₹500 – ₹1,000</div>
+        <div style="font-size:11px; color:var(--muted);">per video</div>
+      </div>
+      <div style="border-top:1px solid var(--border); padding-top:10px; margin-top:10px;">
+        <div style="font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1px;">With Graphics & Effects</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--accent);">₹1,000 – ₹2,500</div>
+        <div style="font-size:11px; color:var(--muted);">per video</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg3); border:1px solid var(--border); padding:28px 24px;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:2px; color:var(--text); margin-bottom:16px;">🎵 Music Video</div>
+      <div style="margin-bottom:10px;">
+        <div style="font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1px;">Full Edit & Color Grade</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--accent);">₹3,000 – ₹8,000</div>
+        <div style="font-size:11px; color:var(--muted);">per video</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg3); border:1px solid var(--border); padding:28px 24px;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:2px; color:var(--text); margin-bottom:16px;">📹 Vlog</div>
+      <div style="margin-bottom:10px;">
+        <div style="font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1px;">Full Edit & Grade</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--accent);">₹1,500 – ₹4,000</div>
+        <div style="font-size:11px; color:var(--muted);">per video</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Important note -->
+  <div style="background:var(--bg2); border:1px solid var(--border); border-left: 4px solid var(--accent); padding:24px 28px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px;">
+    <div>
+      <div style="font-size:11px; color:var(--accent); letter-spacing:2px; text-transform:uppercase; margin-bottom:6px;">⚡ Important</div>
+      <div style="font-size:16px; color:var(--text); font-weight:500;">Pricing varies by project. Let's talk!</div>
+      <div style="font-size:13px; color:var(--muted); margin-top:4px;">Every project is unique — reach out and we'll find the right package for you.</div>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="https://wa.me/919353453767" target="_blank" class="btn" style="background:#25d366;">💬 WhatsApp</a>
+      <a href="mailto:vipinrao.editor@gmail.com" class="btn btn-outline">✉️ Email Me</a>
     </div>
   </div>
 </section>
